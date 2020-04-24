@@ -328,10 +328,11 @@ function tallyUpDonations(runners) {
  * counter1 utilizes the function 'counterMaker()' which has been defined elsewhere while counter2 is a function declaration. 
  * 
  * 2. Which of the two uses a closure? How can you tell?
- *   
+ * counter1 utilizes closure.  I can tell because it returns a funtion.
  
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *  
+ *  counter1 would be preferable in a namespace collision situation. Using closures to namespace private 
+ *  functions keeps more general namespaces clean, preventing naming collisions. 
 
 */
 
