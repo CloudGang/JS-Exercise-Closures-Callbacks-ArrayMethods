@@ -15,7 +15,7 @@
  * should return 'foofoo'.
 */
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+  return callback(stringList[0]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 }
 
 // ⭐️ Example Challenge END ⭐️
@@ -48,8 +48,8 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
-  /* CODE HERE */
+function processLength(list, callback) {
+  return callback(list.length);
 }
 
 /**
@@ -66,8 +66,8 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, callback) {
+  return callback(stringList.slice(-1)[0]);
 }
 
 /**
@@ -88,8 +88,8 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `-5`, '-1', and `(num) => num + 1000`,
  * should return 994.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(num1, num2, callback) {
+  return callback(num1 + num2);
 }
 
 /**
@@ -110,8 +110,8 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  return callback(num1 * num2);
 }
 
 /**
@@ -132,8 +132,8 @@ function processProduct(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  return callback([...new Set(list)]);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -155,8 +155,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * 
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function lowerCaseStrings(/* code here */) {
-  /* code here */
+function lowerCaseStrings(strings) {
+  const arrayFruits = [];
+  const lowerFruits = strings.forEach(function(str) {
+    arrayFruits.push(str.toLowerCase());
+  })
+  return arrayFruits;
 }
 
 /**
@@ -174,8 +178,16 @@ function lowerCaseStrings(/* code here */) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(strings) {
+  const findApple = strings.map(function(fruit) {
+    if (fruit === 'apple') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  return findApple;
 }
 
 /**
@@ -194,8 +206,11 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
-  /* code here */
+function removeApple(strings) {
+  const noApple = strings.filter(function(fruit) {
+    return fruit !== 'apple';
+  })
+  return noApple;
 }
 
 /**
@@ -213,8 +228,11 @@ function removeApple(/* code here */) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
-  /* code here */
+function stringSmash(strings) {
+  const oneString = strings.reduce(function(accumulator, currentValue ) {
+    return accumulator + currentValue;
+  })
+  return oneString;
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -225,15 +243,18 @@ function stringSmash(/* code here */) {
 /**
  * ### Challenge `getFullNames`
  * 
- * @instructions
+ * @instructions 
  * Implement this function using forEach() or map().
  * 
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  const nameArr = runners.map(function(name) {
+    return `${name.last_name}, ${name.first_name}`;
+  })
+  return nameArr;
 }
 
 /**
@@ -248,8 +269,11 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  const capsFirstName = runners.map(name => {
+    return name.first_name.toUpperCase();
+  })
+  return capsFirstName; 
 }
 
 /**
@@ -266,8 +290,11 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  const getShirtSize = runners.filter(function(shirt) {
+    return shirt.shirt_size === tShirtSize;
+  })
+  return getShirtSize;
 }
 
 /**
@@ -281,8 +308,11 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  const totalDonations = runners.reduce(function(total, amount) {
+    return total += amount.donation; 
+  }, 0);
+  return totalDonations;
 }
 
 /////////////// CLOSURES ///////////////
@@ -295,11 +325,15 @@ function tallyUpDonations(/* CODE HERE */) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ * counter1 utilizes the function 'counterMaker()' which has been defined elsewhere while counter2 is a function declaration. 
  * 
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * counter1 utilizes closure.  I can tell because it returns a funtion.
+ 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *  counter1 would be preferable in a namespace collision situation. Using closures to namespace private 
+ *  functions keeps more general namespaces clean, preventing naming collisions. 
+
 */
 
 // counter1 code
@@ -340,8 +374,14 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(maxNum) {
+  let counter3 = 0;
+  return function() {
+    if (counter3 > maxNum) {
+      counter3 = 0;
+    }
+    return counter3++;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
